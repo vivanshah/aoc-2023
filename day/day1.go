@@ -51,9 +51,8 @@ func (d *Day1) ReadFile(path string) error {
 func (d *Day1) Part1() {
 	fmt.Println("Day 1 Part 1")
 	sum := 0
-	for x, s := range d.Entries {
+	for _, s := range d.Entries {
 		lineSum := []byte{}
-		fmt.Println("Line", x+1, ":", s)
 		for i := 0; i < len(s); i++ {
 			if s[i] >= '0' && s[i] <= '9' {
 				lineSum = append(lineSum, s[i])
