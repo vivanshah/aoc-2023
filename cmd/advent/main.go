@@ -41,8 +41,8 @@ func main() {
 	zero := time.Now()
 	for _, d := range days {
 		n := d.GetDayNumber()
-		start := time.Now()
 		d.ReadFile(fmt.Sprintf("../../day%d.txt", n))
+		start := time.Now()
 		d.Part1()
 		elapsed := time.Since(start)
 		fmt.Printf("Part 1 took %s\n", elapsed)
