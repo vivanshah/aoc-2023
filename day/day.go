@@ -28,5 +28,6 @@ func GetDay(d int) Day {
 func GetDays() []Day {
 	return []Day{
 		&Day1{},
+		&Day2{},
 	}
 }
