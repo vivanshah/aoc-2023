@@ -53,33 +53,24 @@ func (d *Day4) Part1() {
 	fmt.Println("Day 4 Part 1")
 	var points int
 	points = 0
-	for row, l := range d.Entries {
+	for _, l := range d.Entries {
 		cardParts := strings.Split(l, ": ")
 		numberParts := strings.Split(cardParts[1], " | ")
 		wn := strings.Fields(numberParts[0])
+		matches := 0
 		winningNumbers := map[int]bool{}
 		for _, n := range wn {
 			winningNumber, _ := strconv.Atoi(n)
 			winningNumbers[winningNumber] = true
-
 		}
-
 		mn := strings.Fields(numberParts[1])
-		myNumbers := map[int]bool{}
 		for _, n := range mn {
 			myNumber, _ := strconv.Atoi(n)
-			myNumbers[myNumber] = true
-		}
-		fmt.Println(winningNumbers, " | ", myNumbers)
-		matches := 0
-		for k, _ := range myNumbers {
-			if winningNumbers[k] {
+			if winningNumbers[myNumber] {
 				matches++
 			}
 		}
-		fmt.Println("Card ", row+1, " has ", matches, "matches")
 		cardPoints := int(math.Pow(float64(2), float64(matches-1)))
-		fmt.Println("Card ", row+1, " worth ", cardPoints, "points")
 		points += cardPoints
 	}
 	fmt.Println(points)
@@ -94,23 +85,20 @@ func (d *Day4) Part2() {
 		cardParts := strings.Split(l, ": ")
 		numberParts := strings.Split(cardParts[1], " | ")
 		wn := strings.Fields(numberParts[0])
+		matches := 0
 		winningNumbers := map[int]bool{}
 		for _, n := range wn {
 			winningNumber, _ := strconv.Atoi(n)
 			winningNumbers[winningNumber] = true
 		}
 		mn := strings.Fields(numberParts[1])
-		myNumbers := map[int]bool{}
 		for _, n := range mn {
 			myNumber, _ := strconv.Atoi(n)
-			myNumbers[myNumber] = true
-		}
-		matches := 0
-		for k, _ := range myNumbers {
-			if winningNumbers[k] {
+			if winningNumbers[myNumber] {
 				matches++
 			}
 		}
+
 		cardCopies[row] += 1
 
 		for i := 0; i < cardCopies[row]; i++ {
